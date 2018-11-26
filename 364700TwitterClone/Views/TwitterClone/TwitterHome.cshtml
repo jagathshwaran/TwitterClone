@@ -1,0 +1,190 @@
+﻿@model DataLayer.ViewModel.TweetViewModel
+@{
+    ViewBag.Title = "Twitter Home";
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style type="text/css">
+    ul li {
+        float: left;
+    }
+
+        ul li:not(:last-child) {
+            border-right: 1px solid grey;
+            margin-right: 0px;
+            padding-right: 0px;
+        }
+
+    .clsAlignMiddle {
+        vertical-align: middle !important;
+        margin-top: 15px;
+    }
+
+    .navbar-nav > li > a {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    .nav > li > a {
+        padding: 10px 10px;
+    }
+
+    .input, select, textarea {
+        max-width: 100%;
+    }
+
+    .col-md-12 {
+        padding-left: 0px !important;
+    }
+
+    #imaginary_container {
+        margin-top: 20%; /* Don't copy this */
+    }
+
+    .stylish-input-group .input-group-addon {
+        background: white !important;
+    }
+
+    .stylish-input-group .form-control {
+        border-right: 0;
+        box-shadow: 0 0 0;
+        border-color: #ccc;
+    }
+
+    .stylish-input-group button {
+        border: 0;
+        background: transparent;
+    }
+</style>
+<script type="text/javascript">
+
+    var userId = '@ViewBag.UserName';
+    var autoSource = @Html.Raw(Json.Encode(@ViewBag.Users));
+
+    $(function () {
+
+        $('#divProfile').hide();
+        $('#divHome').show();
+
+        $("#tags").autocomplete({
+            source: autoSource,
+            minLength:3
+        });
+
+        setInterval('Refresh()', 10000);
+
+    });
+
+    function Refresh() {
+
+        $.ajax(
+        {
+            url: "/TwitterClone/TwitterHomeRefresh",
+            data: { EdittweetId:0, UserName: userId },
+            cache: false,
+            type: 'GET',
+            contentType: "application/json",
+            success: function (html) {
+                $('#divProfile').hide();
+                $('#divHome').show();
+                //$('#divHome').empty();
+                //$('#divHome').html(html);
+            }
+        });
+    }
+
+    function onProfileSetUp(value) {
+        $.ajax({
+            url: "/TwitterClone/EditProfile",
+            //data: { dttime: searchTxt },
+            data: { UserName: userId },
+            cache: false,
+            type: 'GET',
+            contentType: "application/json",
+            success: function (html) {
+                $('#divProfile').show();
+                $('#divHome').hide();
+                $('#divProfile').empty();
+                $('#divProfile').html(html);
+            }
+        });
+    }
+    function onHomePage(value) {
+        $.ajax({
+            url: "/TwitterClone/HomePage",
+            //data: { dttime: searchTxt },
+            data: { UserName: value },
+            cache: false,
+            type: 'GET',
+            contentType: "application/json",
+            success: function (html) {
+                $('#divProfile').hide();
+                $('#divHome').show();
+                //$('#divHome').html(html);
+            }
+        });
+    }
+
+
+</script>
+@using (Html.BeginForm("TwitterMessage", "TwitterClone", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class=".container-fluid">
+        <div class="d-inline-block col-md-3">
+            <div class="col-md-12 text-left">
+                <div id="imaginary_container">
+                    <div class="input-group stylish-input-group">
+                        <input type="text" id="tags" class="form-control" placeholder="Search">
+                        <span class="input-group-addon">
+                            <button>
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div class="clsAlignMiddle">
+                @if (Model.Tweetdetails != null)
+                {
+                    <div><a>@Model.Tweetdetails.TotalTweets</a>  Tweets</div>
+                    <div><a>@Model.Tweetdetails.TotalFollowing</a>  Following</div>
+                    <div><a>@Model.Tweetdetails.TotalFollowers</a>  Followers</div>
+                }
+            </div>
+        </div>
+        <div class="d-inline-block col-md-9">
+            <div class="d-inline-block col-md-5">
+                <h1>My Twitter Clone</h1>
+            </div>
+            <div class="d-inline-block col-md-3 clsAlignMiddle"><h4>Welcome @ViewBag.UserName !</h4></div>
+            <div class="d-inline-block col-md-4 clsAlignMiddle">
+                <div class="d-inline-block">
+                    <div class="d-inline-block navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a onclick="onHomePage('@Model.TweetMessageViewModel.userid')">Home</a>
+                                @*@Html.ActionLink("Home", "HomePage", new { UserName = Model.TweetMessageViewModel.userid })*@
+                            </li>
+                            <li><a onclick="onProfileSetUp('@Model.TweetMessageViewModel.userid')">Profile</a></li>
+                            <li>@Html.ActionLink("Signout", "Index")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div id="divHome">
+                @{Html.RenderPartial("_Tweets", Model);}
+            </div>
+            <div id="divProfile">
+                @{Html.RenderPartial("_ProfileSetUp", new DataLayer.ViewModel.SignUpViewModel());}
+            </div>
+        </div>
+    </div>
+}

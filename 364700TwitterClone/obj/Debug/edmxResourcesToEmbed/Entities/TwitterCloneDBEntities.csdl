@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AngularModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PERSON">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fullName" Type="String" MaxLength="301" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="joined" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TWEETs" Relationship="Self.FK_TWEET_user_id" FromRole="PERSON" ToRole="TWEET" />
+    <NavigationProperty Name="PERSON1" Relationship="Self.FOLLOWING" FromRole="PERSON" ToRole="PERSON1" />
+    <NavigationProperty Name="People" Relationship="Self.FOLLOWING" FromRole="PERSON1" ToRole="PERSON" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="Int32" Nullable="false" />
+    <Property Name="emp_fna" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="emp_lna" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="deptID" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+      <PropertyRef Name="customerId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="customerId" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Orderdate" Type="DateTime" Precision="3" />
+    <Property Name="Shippeddate" Type="DateTime" Precision="3" />
+    <Property Name="Freight" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Shipname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Shipaddres" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="project_na" />
+    </Key>
+    <Property Name="ProjectId" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="project_na" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Budg" Type="Int64" />
+  </EntityType>
+  <EntityType Name="TWEET">
+    <Key>
+      <PropertyRef Name="tweet_id" />
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="message" />
+      <PropertyRef Name="created" />
+    </Key>
+    <Property Name="tweet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="message" Type="String" MaxLength="140" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="PERSON" Relationship="Self.FK_TWEET_user_id" FromRole="TWEET" ToRole="PERSON" />
+  </EntityType>
+  <EntityType Name="Works_on">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="Int32" Nullable="false" />
+    <Property Name="project_n" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Job" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="enter_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VW_DEPARTMENT_d1">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="Int32" Nullable="false" />
+    <Property Name="emp_fna" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="emp_lna" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="deptID" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VW_EMPLOYEE_DETAIL_CONDITION">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="Int32" Nullable="false" />
+    <Property Name="emp_fna" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="emp_lna" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="deptID" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VW_EMPLOYEE_PROJECT_DETAILS_SMITH">
+    <Key>
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="project_na" />
+    </Key>
+    <Property Name="ProjectId" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="project_na" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Budg" Type="Int64" />
+  </EntityType>
+  <EntityType Name="VW_PROJECT_WithoutBudget">
+    <Key>
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="project_na" />
+    </Key>
+    <Property Name="ProjectId" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="project_na" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VW_WORKS_ON_CONDITION">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="Int32" Nullable="false" />
+    <Property Name="project_n" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Job" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="enter_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="VW_WORKS_ON_NOCONDITION">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="Int32" Nullable="false" />
+    <Property Name="project_n" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="Job" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="enter_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_TWEET_user_id">
+    <End Role="PERSON" Type="Self.PERSON" Multiplicity="1" />
+    <End Role="TWEET" Type="Self.TWEET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSON">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="TWEET">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FOLLOWING">
+    <End Role="PERSON" Type="Self.PERSON" Multiplicity="*" />
+    <End Role="PERSON1" Type="Self.PERSON" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="AngularEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="People" EntityType="Self.PERSON" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <EntitySet Name="TWEETs" EntityType="Self.TWEET" />
+    <EntitySet Name="Works_on" EntityType="Self.Works_on" />
+    <EntitySet Name="VW_DEPARTMENT_d1" EntityType="Self.VW_DEPARTMENT_d1" />
+    <EntitySet Name="VW_EMPLOYEE_DETAIL_CONDITION" EntityType="Self.VW_EMPLOYEE_DETAIL_CONDITION" />
+    <EntitySet Name="VW_EMPLOYEE_PROJECT_DETAILS_SMITH" EntityType="Self.VW_EMPLOYEE_PROJECT_DETAILS_SMITH" />
+    <EntitySet Name="VW_PROJECT_WithoutBudget" EntityType="Self.VW_PROJECT_WithoutBudget" />
+    <EntitySet Name="VW_WORKS_ON_CONDITION" EntityType="Self.VW_WORKS_ON_CONDITION" />
+    <EntitySet Name="VW_WORKS_ON_NOCONDITION" EntityType="Self.VW_WORKS_ON_NOCONDITION" />
+    <AssociationSet Name="FK_TWEET_user_id" Association="Self.FK_TWEET_user_id">
+      <End Role="PERSON" EntitySet="People" />
+      <End Role="TWEET" EntitySet="TWEETs" />
+    </AssociationSet>
+    <AssociationSet Name="FOLLOWING" Association="Self.FOLLOWING">
+      <End Role="PERSON" EntitySet="People" />
+      <End Role="PERSON1" EntitySet="People" />
+    </AssociationSet>
+    <FunctionImport Name="AddRecordstoTable">
+      <Parameter Name="Customerid" Mode="In" Type="String" />
+      <Parameter Name="CustomerName" Mode="In" Type="String" />
+      <Parameter Name="CustomerAddress" Mode="In" Type="String" />
+      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+      <Parameter Name="Salary" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="AddStudent">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="DateofBirth" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="CreateTable" />
+    <FunctionImport Name="DeleteCustomers">
+      <Parameter Name="Customerid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetCustomersForDOB" ReturnType="Collection(AngularModel.GetCustomersForDOB_Result)">
+      <Parameter Name="DOB" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="retriveAllRecords" ReturnType="Collection(AngularModel.retriveAllRecords_Result)">
+      <Parameter Name="Customerid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uploadXmlFile">
+      <Parameter Name="strin" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetCustomersForDOB_Result">
+    <Property Type="Int32" Name="Customerid" Nullable="true" />
+    <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CustomerAddress" Nullable="true" />
+    <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="Salary" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="retriveAllRecords_Result">
+    <Property Type="Int32" Name="CUSTOMERID" Nullable="true" />
+    <Property Type="String" Name="CUSTOMERNAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CUSTOMERADDRESS" Nullable="true" />
+    <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="SALARY" Nullable="true" />
+  </ComplexType>
+</Schema>

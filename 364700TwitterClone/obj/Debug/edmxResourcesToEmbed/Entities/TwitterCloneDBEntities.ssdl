@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AngularModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Angular.dbo.CUSTOMERS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CUSTOMERS">
+          <Property Name="CUSTOMERID" Type="int" />
+          <Property Name="CUSTOMERNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="CUSTOMERADDRESS" Type="nvarchar(max)" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="SALARY" Type="bigint" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Angular.dbo.Department' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Department">
+          <Property Name="DeptID" Type="char" MaxLength="2" />
+          <Property Name="DeptCode" Type="char" MaxLength="3" />
+          <Property Name="Location" Type="varchar" MaxLength="30" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Angular.dbo.Employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="int" Nullable="false" />
+    <Property Name="emp_fna" Type="varchar" MaxLength="50" />
+    <Property Name="emp_lna" Type="varchar" MaxLength="50" />
+    <Property Name="deptID" Type="char" MaxLength="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Angular.dbo.FOLLOWING' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="FOLLOWING">
+    <Key>
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="following_id" />
+    </Key>
+    <Property Name="user_id" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="following_id" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Angular.dbo.Orders' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+      <PropertyRef Name="customerId" />
+    </Key>
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="customerId" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Orderdate" Type="datetime" />
+    <Property Name="Shippeddate" Type="datetime" />
+    <Property Name="Freight" Type="money" />
+    <Property Name="Shipname" Type="varchar" MaxLength="40" />
+    <Property Name="Shipaddres" Type="varchar" MaxLength="60" />
+    <Property Name="Quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="PERSON">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fullName" Type="varchar" MaxLength="301" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="joined" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Angular.dbo.Product_Details' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Product_Details">
+          <Property Name="Productid" Type="int" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" />
+          <Property Name="Supplierid" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Angular.dbo.Project' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="project_na" />
+    </Key>
+    <Property Name="ProjectId" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="project_na" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Budg" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Angular.dbo.Regions' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Regions">
+          <Property Name="ID" Type="varchar" MaxLength="4" />
+          <Property Name="CITY" Type="varchar" MaxLength="50" />
+          <Property Name="COUNTRY" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Angular.dbo.Student' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Student">
+          <Property Name="SID" Type="int" />
+          <Property Name="SName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateofBirth" Type="date" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Angular.dbo.Supplier_Info' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Supplier_Info">
+          <Property Name="SupplierId" Type="int" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactNo" Type="bigint" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Angular.dbo.TWEET' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TWEET">
+    <Key>
+      <PropertyRef Name="tweet_id" />
+      <PropertyRef Name="user_id" />
+      <PropertyRef Name="message" />
+      <PropertyRef Name="created" />
+    </Key>
+    <Property Name="tweet_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="message" Type="varchar" MaxLength="140" Nullable="false" />
+    <Property Name="created" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Angular.dbo.Works_on' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Works_on">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="int" Nullable="false" />
+    <Property Name="project_n" Type="char" MaxLength="2" />
+    <Property Name="Job" Type="varchar" MaxLength="50" />
+    <Property Name="enter_date" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Angular.dbo.VW_DEPARTMENT_d1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_DEPARTMENT_d1">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="int" Nullable="false" />
+    <Property Name="emp_fna" Type="varchar" MaxLength="50" />
+    <Property Name="emp_lna" Type="varchar" MaxLength="50" />
+    <Property Name="deptID" Type="char" MaxLength="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Angular.dbo.VW_EMPLOYEE_DETAIL_CONDITION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_EMPLOYEE_DETAIL_CONDITION">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="int" Nullable="false" />
+    <Property Name="emp_fna" Type="varchar" MaxLength="50" />
+    <Property Name="emp_lna" Type="varchar" MaxLength="50" />
+    <Property Name="deptID" Type="char" MaxLength="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Angular.dbo.VW_EMPLOYEE_PROJECT_DETAILS_SMITH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_EMPLOYEE_PROJECT_DETAILS_SMITH">
+    <Key>
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="project_na" />
+    </Key>
+    <Property Name="ProjectId" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="project_na" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Budg" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Angular.dbo.VW_EMPLOYEES_SNDHALF' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="VW_EMPLOYEES_SNDHALF">
+          <Property Name="first" Type="varchar" MaxLength="50" />
+          <Property Name="last" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Angular.dbo.VW_PROJECT_WithoutBudget' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_PROJECT_WithoutBudget">
+    <Key>
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="project_na" />
+    </Key>
+    <Property Name="ProjectId" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="project_na" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Angular.dbo.VW_WORKS_ON_CONDITION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_WORKS_ON_CONDITION">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="int" Nullable="false" />
+    <Property Name="project_n" Type="char" MaxLength="2" />
+    <Property Name="Job" Type="varchar" MaxLength="50" />
+    <Property Name="enter_date" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Angular.dbo.VW_WORKS_ON_NOCONDITION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VW_WORKS_ON_NOCONDITION">
+    <Key>
+      <PropertyRef Name="emp_no" />
+    </Key>
+    <Property Name="emp_no" Type="int" Nullable="false" />
+    <Property Name="project_n" Type="char" MaxLength="2" />
+    <Property Name="Job" Type="varchar" MaxLength="50" />
+    <Property Name="enter_date" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_FOLLOWING_following_id">
+    <End Role="PERSON" Type="Self.PERSON" Multiplicity="1" />
+    <End Role="FOLLOWING" Type="Self.FOLLOWING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSON">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="FOLLOWING">
+        <PropertyRef Name="following_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOLLOWING_user_id">
+    <End Role="PERSON" Type="Self.PERSON" Multiplicity="1" />
+    <End Role="FOLLOWING" Type="Self.FOLLOWING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSON">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="FOLLOWING">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TWEET_user_id">
+    <End Role="PERSON" Type="Self.PERSON" Multiplicity="1" />
+    <End Role="TWEET" Type="Self.TWEET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSON">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="TWEET">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AddRecordstoTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Customerid" Type="char" Mode="In" />
+    <Parameter Name="CustomerName" Type="varchar" Mode="In" />
+    <Parameter Name="CustomerAddress" Type="varchar" Mode="In" />
+    <Parameter Name="DOB" Type="datetime" Mode="In" />
+    <Parameter Name="Salary" Type="money" Mode="In" />
+  </Function>
+  <Function Name="AddStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="DateofBirth" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="CreateTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DeleteCustomers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Customerid" Type="char" Mode="In" />
+  </Function>
+  <Function Name="GETAGE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="DateOfBirth" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetCustomersForDOB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DOB" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="retriveAllRecords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Customerid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uploadXmlFile" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="strin" Type="varchar(max)" Mode="In" />
+  </Function>
+  <EntityContainer Name="AngularModelStoreContainer">
+    <EntitySet Name="PERSON" EntityType="Self.PERSON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Employee].[emp_no] AS [emp_no], 
+    [Employee].[emp_fna] AS [emp_fna], 
+    [Employee].[emp_lna] AS [emp_lna], 
+    [Employee].[deptID] AS [deptID]
+    FROM [dbo].[Employee] AS [Employee]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="FOLLOWING" EntityType="Self.FOLLOWING" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [FOLLOWING].[user_id] AS [user_id], 
+    [FOLLOWING].[following_id] AS [following_id]
+    FROM [dbo].[FOLLOWING] AS [FOLLOWING]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Orders" EntityType="Self.Orders" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Orders].[OrderId] AS [OrderId], 
+    [Orders].[customerId] AS [customerId], 
+    [Orders].[Orderdate] AS [Orderdate], 
+    [Orders].[Shippeddate] AS [Shippeddate], 
+    [Orders].[Freight] AS [Freight], 
+    [Orders].[Shipname] AS [Shipname], 
+    [Orders].[Shipaddres] AS [Shipaddres], 
+    [Orders].[Quantity] AS [Quantity]
+    FROM [dbo].[Orders] AS [Orders]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Project" EntityType="Self.Project" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Project].[ProjectId] AS [ProjectId], 
+    [Project].[project_na] AS [project_na], 
+    [Project].[Budg] AS [Budg]
+    FROM [dbo].[Project] AS [Project]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TWEET" EntityType="Self.TWEET" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TWEET].[tweet_id] AS [tweet_id], 
+    [TWEET].[user_id] AS [user_id], 
+    [TWEET].[message] AS [message], 
+    [TWEET].[created] AS [created]
+    FROM [dbo].[TWEET] AS [TWEET]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Works_on" EntityType="Self.Works_on" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Works_on].[emp_no] AS [emp_no], 
+    [Works_on].[project_n] AS [project_n], 
+    [Works_on].[Job] AS [Job], 
+    [Works_on].[enter_date] AS [enter_date]
+    FROM [dbo].[Works_on] AS [Works_on]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_DEPARTMENT_d1" EntityType="Self.VW_DEPARTMENT_d1" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_DEPARTMENT_d1].[emp_no] AS [emp_no], 
+    [VW_DEPARTMENT_d1].[emp_fna] AS [emp_fna], 
+    [VW_DEPARTMENT_d1].[emp_lna] AS [emp_lna], 
+    [VW_DEPARTMENT_d1].[deptID] AS [deptID]
+    FROM [dbo].[VW_DEPARTMENT_d1] AS [VW_DEPARTMENT_d1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_EMPLOYEE_DETAIL_CONDITION" EntityType="Self.VW_EMPLOYEE_DETAIL_CONDITION" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_EMPLOYEE_DETAIL_CONDITION].[emp_no] AS [emp_no], 
+    [VW_EMPLOYEE_DETAIL_CONDITION].[emp_fna] AS [emp_fna], 
+    [VW_EMPLOYEE_DETAIL_CONDITION].[emp_lna] AS [emp_lna], 
+    [VW_EMPLOYEE_DETAIL_CONDITION].[deptID] AS [deptID]
+    FROM [dbo].[VW_EMPLOYEE_DETAIL_CONDITION] AS [VW_EMPLOYEE_DETAIL_CONDITION]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_EMPLOYEE_PROJECT_DETAILS_SMITH" EntityType="Self.VW_EMPLOYEE_PROJECT_DETAILS_SMITH" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_EMPLOYEE_PROJECT_DETAILS_SMITH].[ProjectId] AS [ProjectId], 
+    [VW_EMPLOYEE_PROJECT_DETAILS_SMITH].[project_na] AS [project_na], 
+    [VW_EMPLOYEE_PROJECT_DETAILS_SMITH].[Budg] AS [Budg]
+    FROM [dbo].[VW_EMPLOYEE_PROJECT_DETAILS_SMITH] AS [VW_EMPLOYEE_PROJECT_DETAILS_SMITH]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_PROJECT_WithoutBudget" EntityType="Self.VW_PROJECT_WithoutBudget" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_PROJECT_WithoutBudget].[ProjectId] AS [ProjectId], 
+    [VW_PROJECT_WithoutBudget].[project_na] AS [project_na]
+    FROM [dbo].[VW_PROJECT_WithoutBudget] AS [VW_PROJECT_WithoutBudget]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_WORKS_ON_CONDITION" EntityType="Self.VW_WORKS_ON_CONDITION" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_WORKS_ON_CONDITION].[emp_no] AS [emp_no], 
+    [VW_WORKS_ON_CONDITION].[project_n] AS [project_n], 
+    [VW_WORKS_ON_CONDITION].[Job] AS [Job], 
+    [VW_WORKS_ON_CONDITION].[enter_date] AS [enter_date]
+    FROM [dbo].[VW_WORKS_ON_CONDITION] AS [VW_WORKS_ON_CONDITION]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VW_WORKS_ON_NOCONDITION" EntityType="Self.VW_WORKS_ON_NOCONDITION" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VW_WORKS_ON_NOCONDITION].[emp_no] AS [emp_no], 
+    [VW_WORKS_ON_NOCONDITION].[project_n] AS [project_n], 
+    [VW_WORKS_ON_NOCONDITION].[Job] AS [Job], 
+    [VW_WORKS_ON_NOCONDITION].[enter_date] AS [enter_date]
+    FROM [dbo].[VW_WORKS_ON_NOCONDITION] AS [VW_WORKS_ON_NOCONDITION]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_FOLLOWING_following_id" Association="Self.FK_FOLLOWING_following_id">
+      <End Role="PERSON" EntitySet="PERSON" />
+      <End Role="FOLLOWING" EntitySet="FOLLOWING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOLLOWING_user_id" Association="Self.FK_FOLLOWING_user_id">
+      <End Role="PERSON" EntitySet="PERSON" />
+      <End Role="FOLLOWING" EntitySet="FOLLOWING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TWEET_user_id" Association="Self.FK_TWEET_user_id">
+      <End Role="PERSON" EntitySet="PERSON" />
+      <End Role="TWEET" EntitySet="TWEET" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

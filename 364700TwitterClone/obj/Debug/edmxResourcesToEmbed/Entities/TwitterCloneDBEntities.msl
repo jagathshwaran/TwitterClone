@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AngularModelStoreContainer" CdmEntityContainer="AngularEntities">
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="AngularModel.PERSON">
+        <MappingFragment StoreEntitySet="PERSON">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="joined" ColumnName="joined" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="AngularModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="emp_no" ColumnName="emp_no" />
+          <ScalarProperty Name="emp_fna" ColumnName="emp_fna" />
+          <ScalarProperty Name="emp_lna" ColumnName="emp_lna" />
+          <ScalarProperty Name="deptID" ColumnName="deptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="AngularModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="Orderdate" ColumnName="Orderdate" />
+          <ScalarProperty Name="Shippeddate" ColumnName="Shippeddate" />
+          <ScalarProperty Name="Freight" ColumnName="Freight" />
+          <ScalarProperty Name="Shipname" ColumnName="Shipname" />
+          <ScalarProperty Name="Shipaddres" ColumnName="Shipaddres" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="AngularModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="project_na" ColumnName="project_na" />
+          <ScalarProperty Name="Budg" ColumnName="Budg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TWEETs">
+      <EntityTypeMapping TypeName="AngularModel.TWEET">
+        <MappingFragment StoreEntitySet="TWEET">
+          <ScalarProperty Name="tweet_id" ColumnName="tweet_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="created" ColumnName="created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Works_on">
+      <EntityTypeMapping TypeName="AngularModel.Works_on">
+        <MappingFragment StoreEntitySet="Works_on">
+          <ScalarProperty Name="emp_no" ColumnName="emp_no" />
+          <ScalarProperty Name="project_n" ColumnName="project_n" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="enter_date" ColumnName="enter_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_DEPARTMENT_d1">
+      <EntityTypeMapping TypeName="AngularModel.VW_DEPARTMENT_d1">
+        <MappingFragment StoreEntitySet="VW_DEPARTMENT_d1">
+          <ScalarProperty Name="emp_no" ColumnName="emp_no" />
+          <ScalarProperty Name="emp_fna" ColumnName="emp_fna" />
+          <ScalarProperty Name="emp_lna" ColumnName="emp_lna" />
+          <ScalarProperty Name="deptID" ColumnName="deptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_EMPLOYEE_DETAIL_CONDITION">
+      <EntityTypeMapping TypeName="AngularModel.VW_EMPLOYEE_DETAIL_CONDITION">
+        <MappingFragment StoreEntitySet="VW_EMPLOYEE_DETAIL_CONDITION">
+          <ScalarProperty Name="emp_no" ColumnName="emp_no" />
+          <ScalarProperty Name="emp_fna" ColumnName="emp_fna" />
+          <ScalarProperty Name="emp_lna" ColumnName="emp_lna" />
+          <ScalarProperty Name="deptID" ColumnName="deptID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_EMPLOYEE_PROJECT_DETAILS_SMITH">
+      <EntityTypeMapping TypeName="AngularModel.VW_EMPLOYEE_PROJECT_DETAILS_SMITH">
+        <MappingFragment StoreEntitySet="VW_EMPLOYEE_PROJECT_DETAILS_SMITH">
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="project_na" ColumnName="project_na" />
+          <ScalarProperty Name="Budg" ColumnName="Budg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_PROJECT_WithoutBudget">
+      <EntityTypeMapping TypeName="AngularModel.VW_PROJECT_WithoutBudget">
+        <MappingFragment StoreEntitySet="VW_PROJECT_WithoutBudget">
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="project_na" ColumnName="project_na" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_WORKS_ON_CONDITION">
+      <EntityTypeMapping TypeName="AngularModel.VW_WORKS_ON_CONDITION">
+        <MappingFragment StoreEntitySet="VW_WORKS_ON_CONDITION">
+          <ScalarProperty Name="emp_no" ColumnName="emp_no" />
+          <ScalarProperty Name="project_n" ColumnName="project_n" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="enter_date" ColumnName="enter_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VW_WORKS_ON_NOCONDITION">
+      <EntityTypeMapping TypeName="AngularModel.VW_WORKS_ON_NOCONDITION">
+        <MappingFragment StoreEntitySet="VW_WORKS_ON_NOCONDITION">
+          <ScalarProperty Name="emp_no" ColumnName="emp_no" />
+          <ScalarProperty Name="project_n" ColumnName="project_n" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="enter_date" ColumnName="enter_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FOLLOWING" TypeName="AngularModel.FOLLOWING" StoreEntitySet="FOLLOWING">
+      <EndProperty Name="PERSON">
+        <ScalarProperty Name="user_id" ColumnName="following_id" />
+      </EndProperty>
+      <EndProperty Name="PERSON1">
+        <ScalarProperty Name="user_id" ColumnName="user_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="AddRecordstoTable" FunctionName="AngularModel.Store.AddRecordstoTable" />
+    <FunctionImportMapping FunctionImportName="AddStudent" FunctionName="AngularModel.Store.AddStudent" />
+    <FunctionImportMapping FunctionImportName="CreateTable" FunctionName="AngularModel.Store.CreateTable" />
+    <FunctionImportMapping FunctionImportName="DeleteCustomers" FunctionName="AngularModel.Store.DeleteCustomers" />
+    <FunctionImportMapping FunctionImportName="GetCustomersForDOB" FunctionName="AngularModel.Store.GetCustomersForDOB">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AngularModel.GetCustomersForDOB_Result">
+          <ScalarProperty Name="Customerid" ColumnName="Customerid" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="retriveAllRecords" FunctionName="AngularModel.Store.retriveAllRecords">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AngularModel.retriveAllRecords_Result">
+          <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
+          <ScalarProperty Name="CUSTOMERNAME" ColumnName="CUSTOMERNAME" />
+          <ScalarProperty Name="CUSTOMERADDRESS" ColumnName="CUSTOMERADDRESS" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uploadXmlFile" FunctionName="AngularModel.Store.uploadXmlFile" />
+  </EntityContainerMapping>
+</Mapping>
